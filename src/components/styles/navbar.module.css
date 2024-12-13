@@ -1,4 +1,4 @@
-/* styles/navbar.module.css */
+/* navbar.module.css */
 
 .navbar {
   display: flex;
@@ -8,26 +8,29 @@
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   font-family: "Georgia", serif;
+  color: #ffffff;
 }
 
 .menuContainer {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .menuItem {
   text-decoration: none;
-  color: #000;
-  padding: 7px 10px;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  padding: 10px 15px;
   border-radius: 10px;
   transition: background-color 0.3s ease;
 }
 
 .menuItemActive {
-  background-color: #d3d3d3;
+  background-color: #2d3832 !important;
 }
 
 .hamburgerMenu {
@@ -41,5 +44,19 @@
 
   .hamburgerMenu {
     display: block;
+  }
+
+  .ant-menu-item {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #304c40;
+    color: #ffffff;
+  }
+
+  .ant-menu-item-selected {
+    background-color: #d3d3d3;
   }
 }
