@@ -1,0 +1,45 @@
+/* styles/navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+}
+
+.menuContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.menuItem {
+  text-decoration: none;
+  color: #000;
+  padding: 7px 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.menuItemActive {
+  background-color: #d3d3d3;
+}
+
+.hamburgerMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menuContainer {
+    display: none;
+  }
+
+  .hamburgerMenu {
+    display: block;
+  }
+}

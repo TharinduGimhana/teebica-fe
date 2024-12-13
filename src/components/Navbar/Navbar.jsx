@@ -1,11 +1,15 @@
+// components/Navbar.jsx
 "use client";
 
 import React, { useState } from "react";
-import { Menu } from "antd";
+import { Menu, Drawer, Button } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import styles from "../styles/navbar.module.css";  // Import the CSS module
 
 const Navbar = () => {
   const [activeKey, setActiveKey] = useState("/");
+  const [open, setOpen] = useState(false);
 
   const menuItems = [
     { key: "/", label: "Home" },
@@ -18,50 +22,65 @@ const Navbar = () => {
 
   const handleClick = (key) => {
     setActiveKey(key);
+    if (open) setOpen(false);
+  };
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setOpen(false);
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "20px 40px",
-      }}
-    >
+    <div className={styles.navbar}>
       {/* Left Side: Logo */}
-      <div style={{ fontSize: "20px", fontWeight: "bold", fontFamily: "Georgia, serif" }}>
+      <div className={styles.logo}>
         <h1>Teebica</h1>
       </div>
 
       {/* Right Side: Menu */}
-      <div
-        style={{
-          display: "flex",
-          gap: "10px", // Space between menu items
-        }}
-      >
+      <div className={styles.menuContainer}>
         {menuItems.map((item) => (
           <Link
             key={item.key}
             href={item.key}
             onClick={() => handleClick(item.key)}
-            style={{
-              textDecoration: "none",
-              color: "#000000",
-              padding: "7px 10px",
-              borderRadius: "10px",
-              backgroundColor:
-                activeKey === item.key ? "#d3d3d3" : "transparent", // Highlight active link
-              transition: "background-color 0.3s ease",
-              fontFamily: "Poppins, sans-serif", // Apply Poppins Medium font to the menu items
-              fontSize: "22px"
-            }}
+            className={`${styles.menuItem} ${activeKey === item.key ? styles.menuItemActive : ""}`}
           >
             {item.label}
           </Link>
         ))}
       </div>
+
+      {/* Mobile Menu Button (Hamburger) */}
+      <Button
+        className={styles.hamburgerMenu}
+        type="text"
+        icon={<MenuOutlined />}
+        onClick={showDrawer}
+      />
+
+      {/* Drawer for Mobile Menu */}
+      <Drawer
+        title="Menu"
+        placement="right"
+        closable={false}
+        onClose={closeDrawer}
+        open={open} // Updated to `open` prop
+        width={250}
+      >
+        <Menu
+          mode="inline"
+          selectedKeys={[activeKey]}
+          onClick={({ key }) => handleClick(key)}
+        >
+          {menuItems.map((item) => (
+            <Menu.Item key={item.key}>{item.label}</Menu.Item>
+          ))}
+        </Menu>
+      </Drawer>
     </div>
   );
 };
