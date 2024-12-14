@@ -104,10 +104,6 @@ body {
   color: #fff !important;
 }
 
-.ant-drawer-content-wrapper {
-  z-index: 999 !important;
-}
-
 .ant-card-body {
   padding: 5px 5px 15px 5px !important;
 }

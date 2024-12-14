@@ -70,7 +70,7 @@ export default function Home() {
 
       <Row className={styles.fadeRow} gutter={[16, 16]} justify="center">
         {cardData.map((card) => (
-          <Col key={card.id} xs={24} sm={12} md={8} lg={6}>
+          <Col key={card.id} xs={24} sm={12} md={12} lg={6}>
             <div className={styles.cardContainer}>
               <Card
                 className={styles.card}
@@ -80,9 +80,13 @@ export default function Home() {
                     <Image
                       alt={card.title}
                       src={card.image}
-                      width={80} // Replace with actual dimensions
-                      height={80} // Replace with actual dimensions
+                      width={100}
+                      height={100}
                       className={styles.cardImage}
+                      style={{
+                        borderRadius: "50%",
+                        border: "2px solid white",
+                      }}
                     />
                   </div>
                 }
