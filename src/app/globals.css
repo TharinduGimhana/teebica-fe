@@ -107,3 +107,23 @@ body {
 .ant-card-body {
   padding: 5px 5px 15px 5px !important;
 }
+
+.anticon{
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.ant-pagination-item a{
+  color: #ffffff !important;
+}
+
+.ant-pagination-item-active a{
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.ant-pagination-item{
+ background: none !important;
+ border: none !important;
+ font-size: 25px;
+}

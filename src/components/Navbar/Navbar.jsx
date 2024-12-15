@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, Drawer, Button } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
 
 const Navbar = () => {
   const [activeKey, setActiveKey] = useState("/");
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = [
     { key: "/", label: "Home" },
@@ -21,15 +20,7 @@ const Navbar = () => {
 
   const handleClick = (key) => {
     setActiveKey(key);
-    if (open) setOpen(false);
-  };
-
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const closeDrawer = () => {
-    setOpen(false);
+    setMenuOpen(false); // Close menu after selecting an item
   };
 
   useEffect(() => {
@@ -38,7 +29,6 @@ const Navbar = () => {
     };
 
     window.addEventListener("popstate", handleRouteChange);
-
     handleRouteChange();
 
     return () => {
@@ -54,7 +44,21 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className={styles.menuContainer}>
+      {/* Toggle Button for Mobile */}
+      <button
+        className={styles.hamburgerMenu}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle Menu"
+      >
+        {menuOpen ? <CloseOutlined /> : <MenuOutlined />}
+      </button>
+
+      {/* Navigation Menu */}
+      <div
+        className={`${styles.menuContainer} ${
+          menuOpen ? styles.menuOpen : styles.menuClosed
+        }`}
+      >
         {menuItems.map((item) => (
           <Link
             key={item.key}
@@ -68,38 +72,6 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-
-      <Button
-        className={styles.hamburgerMenu}
-        type="text"
-        icon={<MenuOutlined />}
-        onClick={showDrawer}
-      />
-
-      <Drawer
-        placement="right"
-        closable={false}
-        onClose={closeDrawer}
-        open={open}
-        width={250}
-      >
-        <Menu
-          mode="inline"
-          selectedKeys={[activeKey]}
-          onClick={({ key }) => handleClick(key)}
-        >
-          {menuItems.map((item) => (
-            <Menu.Item
-              key={item.key}
-              className={activeKey === item.key ? styles.menuItemActive : ""}
-            >
-              <Link href={item.key} className={styles.menuItem}>
-                {item.label}
-              </Link>
-            </Menu.Item>
-          ))}
-        </Menu>
-      </Drawer>
     </div>
   );
 };
