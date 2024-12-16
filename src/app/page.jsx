@@ -85,7 +85,7 @@ export default function Home() {
                       className={styles.cardImage}
                       style={{
                         borderRadius: "50%",
-                        border: "2px solid white",
+                        border: "3px solid white",
                       }}
                     />
                   </div>
