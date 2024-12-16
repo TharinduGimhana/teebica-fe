@@ -5,7 +5,7 @@ import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({  isScrolled: parentIsScrolled  }) => {
   const [activeKey, setActiveKey] = useState("/");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,22 +39,15 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Handle scroll-based navbar background
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Add background after scrolling 50px
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if (menuOpen) {
+      document.body.style.overflow = "hidden"; // Disable scroll when menu is open
+    } else {
+      document.body.style.overflow = ""; // Re-enable scroll
+    }
+  }, [menuOpen]);
 
   return (
-    <div
-      className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}
-    >
+    <div  className={`${styles.navbar} ${parentIsScrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>
         <Link href="/" onClick={() => setActiveKey("/")}>
           <h1>Teebica</h1>

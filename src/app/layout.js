@@ -1,6 +1,9 @@
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import { useState, useEffect } from "react"; // Import useState and useEffect
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,18 +15,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Teebica",
-  description: "Experience the taste",
-};
+// export const metadata = {
+//   title: "Teebica",
+//   description: "Experience the taste",
+// };
 
 export default function RootLayout({ children }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const scrollContainer = document.getElementById("scroll-container"); // Replace with your scrollable container
+    const handleScroll = () => {
+      if (scrollContainer.scrollTop > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    scrollContainer.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} full-background`}  // Add full-background class here
+        className={`${geistSans.variable} ${geistMono.variable} full-background`}
+        id="scroll-container"
       >
-        <Navbar />
+        <Navbar isScrolled={isScrolled} />
         {children}
       </body>
     </html>

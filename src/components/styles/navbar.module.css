@@ -3,16 +3,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: transparent; /* Transparent by default */
+  background-color: transparent;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  transition: background-color 0.3s ease; /* Smooth transition for background */
+  z-index: 1001;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar.scrolled {
-  background-color: #2c4c37 !important; /* Background color when scrolled */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+  background-color: #2c4c37;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo {
@@ -22,7 +23,6 @@
   color: #ffffff;
 }
 
-/* Desktop Menu */
 .menuContainer {
   display: flex;
   gap: 20px;
@@ -43,10 +43,9 @@
 }
 
 .menuItemActive {
-  background-color: #2d3832 !important;
+  background-color: #2d3832;
 }
 
-/* Hamburger Menu Button */
 .hamburgerMenu {
   display: none;
   background: none;
@@ -56,20 +55,20 @@
   cursor: pointer;
 }
 
-/* Mobile Menu */
 @media (max-width: 820px) {
   .menuContainer {
     display: none;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
-    top: 60px;
-    right: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
     background-color: #284231;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 50px 20px;
     z-index: 1000;
+    overflow-y: auto;
   }
 
   .menuOpen {
