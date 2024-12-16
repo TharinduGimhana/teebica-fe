@@ -82,3 +82,23 @@
   transform: translateX(-50%); /* Center horizontally */
   z-index: 1000; /* Ensure it's above other content */
 }
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 3.5rem;
+  }
+
+  .descriptionColumn h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .descriptionColumn p {
+    font-size: 20px;
+  }
+
+  .readMore {
+    font-size: 20px;
+  }
+  
+}

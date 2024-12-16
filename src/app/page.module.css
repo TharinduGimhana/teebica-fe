@@ -64,10 +64,10 @@
   background-color: #ffffff;
   color: #000000;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 600; /* Semibold */
-  padding: 22px;
+  padding: 24px;
   font-size: 1.4rem;
 }
 
@@ -79,12 +79,12 @@
 .orderNowButton {
   border: 3px solid #ffffff;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 600; /* Semibold */
   background: none;
   opacity: 0.9;
-  padding: 20px;
+  padding: 22px;
   font-size: 1.4rem;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .cardDescription {
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.3;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
@@ -181,6 +181,18 @@
   
   .paragraph {
     width: 70%;
+  }
+
+  .readMoreButton {
+    border-radius: 20px;
+    padding: 24px;
+    font-size: 1rem;
+  }
+    
+  .orderNowButton {
+    border-radius: 20px;
+    padding: 22px;
+    font-size: 1rem;
   }
 }
 

@@ -83,12 +83,6 @@ body {
   z-index: 2; /* Ensure content is above the overlay */
 }
 
-@media (max-width: 768px) {
-  .full-background {
-    background-image: url("../../public/images/DP3Q01691.jpg");
-  }
-}
-
 .ant-btn-icon {
   color: #fff !important;
 }
@@ -108,22 +102,59 @@ body {
   padding: 5px 5px 15px 5px !important;
 }
 
-.anticon{
+.anticon {
   color: #ffffff;
   font-size: 30px;
 }
 
-.ant-pagination-item a{
+.ant-pagination-item a {
   color: #ffffff !important;
 }
 
-.ant-pagination-item-active a{
+.ant-pagination-item-active a {
   color: #ffffff !important;
   font-weight: bold;
 }
 
-.ant-pagination-item{
- background: none !important;
- border: none !important;
- font-size: 30px;
+.ant-pagination-item {
+  background: none !important;
+  border: none !important;
+  font-size: 30px;
+}
+
+.ant-form-item-required::after {
+  content: none !important;
+}
+
+.ant-form-item-required::before {
+  display: none !important; /* Hides the asterisk */
+}
+
+.ant-form-item-label > label {
+  font-family: "Poppins", sans-serif;
+  content: none !important;
+  font-size: 2rem !important;
+  color: #ffffff !important;
+  margin-bottom: 8px;
+}
+
+.ant-form-item-explain-error {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem !important;
+  color: #ff0000;
+  font-style: italic !important;
+}
+
+@media (max-width: 768px) {
+  .full-background {
+    background-image: url("../../public/images/DP3Q01691.jpg");
+  }
+
+  .ant-form-item-label > label {
+    font-size: 1.5rem !important;
+  }
+
+  .ant-form-item-explain-error {
+    font-size: 1rem !important;
+  }
 }
