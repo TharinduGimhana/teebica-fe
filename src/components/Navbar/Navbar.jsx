@@ -8,6 +8,7 @@ import styles from "../styles/navbar.module.css";
 const Navbar = () => {
   const [activeKey, setActiveKey] = useState("/");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const menuItems = [
     { key: "/", label: "Home" },
@@ -24,6 +25,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    // Track active route for highlighting
     const handleRouteChange = () => {
       setActiveKey(window.location.pathname);
     };
@@ -36,8 +38,23 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Handle scroll-based navbar background
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Add background after scrolling 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={styles.navbar}>
+    <div
+      className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}
+    >
       <div className={styles.logo}>
         <Link href="/" onClick={() => setActiveKey("/")}>
           <h1>Teebica</h1>

@@ -31,7 +31,7 @@
 }
 
 .header {
-  font-size: 8rem;
+  font-size: 10rem;
   margin-bottom: 0px;
   font-weight: bold;
   font-family: "Georgia", serif;
@@ -39,7 +39,7 @@
 }
 
 .subHeader {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   margin-bottom: 15px;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
@@ -48,7 +48,7 @@
 
 .paragraph {
   width: 70%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 0px 20px 20px 20px;
   line-height: 1.3;
   color: #ffffff;
@@ -67,7 +67,8 @@
   border-radius: 15px;
   font-family: "Poppins", sans-serif;
   font-weight: 600; /* Semibold */
-  padding: 17px;
+  padding: 22px;
+  font-size: 1.4rem;
 }
 
 .readMoreButton:hover {
@@ -83,7 +84,8 @@
   font-weight: 600; /* Semibold */
   background: none;
   opacity: 0.9;
-  padding: 15px;
+  padding: 20px;
+  font-size: 1.4rem;
 }
 
 .orderNowButton:hover {
@@ -115,7 +117,7 @@
 }
 
 .card {
-  width: 300px;
+  width: 350px;
   background: linear-gradient(to bottom, #55675b, #27322c); /* Fades bottom to top */
   border-radius: 0px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -160,6 +162,12 @@
 
 .cardMeta {
   padding: 0px !important; 
+}
+
+@media (max-width: 400px) {
+  .header {
+    margin-top: 80px;
+  }
 }
 
 @media (max-width: 768px) {

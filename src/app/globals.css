@@ -110,7 +110,7 @@ body {
 
 .anticon{
   color: #ffffff;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .ant-pagination-item a{
@@ -125,5 +125,5 @@ body {
 .ant-pagination-item{
  background: none !important;
  border: none !important;
- font-size: 25px;
+ font-size: 30px;
 }
