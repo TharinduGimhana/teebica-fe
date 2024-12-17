@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Row, Col, Pagination } from "antd";
+import { Row, Col } from "antd";
 import styles from "./page.module.css";
 
 const page = () => {

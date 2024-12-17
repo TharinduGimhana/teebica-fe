@@ -5,7 +5,7 @@ import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
 
-const Navbar = ({  isScrolled: parentIsScrolled  }) => {
+const Navbar = ({ isScrolled: parentIsScrolled }) => {
   const [activeKey, setActiveKey] = useState("/");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,11 +21,10 @@ const Navbar = ({  isScrolled: parentIsScrolled  }) => {
 
   const handleClick = (key) => {
     setActiveKey(key);
-    setMenuOpen(false); // Close menu after selecting an item
+    setMenuOpen(false);
   };
 
   useEffect(() => {
-    // Track active route for highlighting
     const handleRouteChange = () => {
       setActiveKey(window.location.pathname);
     };
@@ -40,21 +39,22 @@ const Navbar = ({  isScrolled: parentIsScrolled  }) => {
 
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; // Disable scroll when menu is open
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""; // Re-enable scroll
+      document.body.style.overflow = "";
     }
   }, [menuOpen]);
 
   return (
-    <div  className={`${styles.navbar} ${parentIsScrolled ? styles.scrolled : ""}`}>
+    <div
+      className={`${styles.navbar} ${parentIsScrolled ? styles.scrolled : ""}`}
+    >
       <div className={styles.logo}>
         <Link href="/" onClick={() => setActiveKey("/")}>
           <h1>Teebica</h1>
         </Link>
       </div>
 
-      {/* Toggle Button for Mobile */}
       <button
         className={styles.hamburgerMenu}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -63,7 +63,6 @@ const Navbar = ({  isScrolled: parentIsScrolled  }) => {
         {menuOpen ? <CloseOutlined /> : <MenuOutlined />}
       </button>
 
-      {/* Navigation Menu */}
       <div
         className={`${styles.menuContainer} ${
           menuOpen ? styles.menuOpen : styles.menuClosed

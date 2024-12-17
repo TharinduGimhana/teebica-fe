@@ -41,7 +41,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Row className={styles.row}>
-        {/* Left Column */}
         <Col xs={24} md={12} className={styles.leftColumn}>
           <h1 className={styles.header}>Teebica</h1>
           <h2 className={styles.subHeader}>Experience The Taste Of Arabica</h2>
@@ -62,7 +61,6 @@ export default function Home() {
           </div>
         </Col>
 
-        {/* Right Column */}
         <Col xs={24} md={12} className={styles.rightColumn}>
           <div className={styles.imageOverlay}></div>
         </Col>

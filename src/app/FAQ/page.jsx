@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { Row, Col, Pagination } from "antd";
+import { Row, Col } from "antd";
 import styles from "./page.module.css";
 
 const image = "/images/Object.png";

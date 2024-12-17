@@ -68,7 +68,7 @@ const page = () => {
 
   return (
     <div className={styles.container}>
-      <h1  className={styles.header}>Health Benefits</h1>
+      <h1 className={styles.header}>Health Benefits</h1>
       {currentItems.map((item) => (
         <Row key={item.id} className={styles.row} gutter={[16, 16]}>
           <Col lg={10} className={styles.imageColumn}>

@@ -20,13 +20,14 @@ const page = () => {
         onFinish={onFinish}
         className={styles.form}
       >
-        {/* First Row: First Name and Last Name */}
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={12}>
             <Form.Item
               label="First Name"
               name="firstName"
-              rules={[{ required: true, message: "Please enter your first name" }]}
+              rules={[
+                { required: true, message: "Please enter your first name" },
+              ]}
             >
               <Input className={styles.input} />
             </Form.Item>
@@ -35,22 +36,8 @@ const page = () => {
             <Form.Item
               label="Last Name"
               name="lastName"
-              rules={[{ required: true, message: "Please enter your last name" }]}
-            >
-              <Input className={styles.input} />
-            </Form.Item>
-          </Col>
-        </Row>
-
-        {/* Second Row: Email Address */}
-        <Row gutter={[16, 16]}>
-          <Col xs={24}>
-            <Form.Item
-              label="Email Address"
-              name="email"
               rules={[
-                { required: true, message: "Please enter your email address" },
-                { type: "email", message: "Please enter a valid email address" },
+                { required: true, message: "Please enter your last name" },
               ]}
             >
               <Input className={styles.input} />
@@ -58,7 +45,24 @@ const page = () => {
           </Col>
         </Row>
 
-        {/* Third Row: Password and Confirm Password */}
+        <Row gutter={[16, 16]}>
+          <Col xs={24}>
+            <Form.Item
+              label="Email Address"
+              name="email"
+              rules={[
+                { required: true, message: "Please enter your email address" },
+                {
+                  type: "email",
+                  message: "Please enter a valid email address",
+                },
+              ]}
+            >
+              <Input className={styles.input} />
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={12}>
             <Form.Item
@@ -84,9 +88,7 @@ const page = () => {
                     if (!value || getFieldValue("password") === value) {
                       return Promise.resolve();
                     }
-                    return Promise.reject(
-                      new Error("Passwords do not match")
-                    );
+                    return Promise.reject(new Error("Passwords do not match"));
                   },
                 }),
               ]}
@@ -96,20 +98,20 @@ const page = () => {
           </Col>
         </Row>
 
-        {/* Fourth Row: Phone Number */}
         <Row gutter={[16, 16]}>
           <Col xs={24}>
             <Form.Item
               label="Phone Number"
               name="phoneNumber"
-              rules={[{ required: true, message: "Please enter your phone number" }]}
+              rules={[
+                { required: true, message: "Please enter your phone number" },
+              ]}
             >
               <Input className={styles.input} />
             </Form.Item>
           </Col>
         </Row>
 
-        {/* Submit Button */}
         <Row>
           <Col xs={24}>
             <Form.Item className={styles.submitAlign}>

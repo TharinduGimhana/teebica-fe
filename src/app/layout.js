@@ -3,7 +3,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { useState, useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const scrollContainer = document.getElementById("scroll-container"); // Replace with your scrollable container
+    const scrollContainer = document.getElementById("scroll-container");
     const handleScroll = () => {
       if (scrollContainer.scrollTop > 10) {
         setIsScrolled(true);
