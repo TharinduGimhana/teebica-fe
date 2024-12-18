@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Row, Col, Button, Card } from "antd";
+import { motion } from "framer-motion";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -70,33 +71,43 @@ export default function Home() {
         {cardData.map((card) => (
           <Col key={card.id} xs={24} sm={12} md={12} lg={6}>
             <div className={styles.cardContainer}>
-              <Card
-                className={styles.card}
-                bordered={false}
-                cover={
-                  <div className={styles.cardImageWrapper}>
-                    <Image
-                      alt={card.title}
-                      src={card.image}
-                      width={100}
-                      height={100}
-                      className={styles.cardImage}
-                      style={{
-                        borderRadius: "50%",
-                        border: "3px solid white",
-                      }}
-                    />
-                  </div>
-                }
+              <motion.div
+                whileHover={{
+                  scale: 1.1,
+                  transition: { duration: 0.3 },
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
               >
-                <Meta
-                  title={<h3 className={styles.cardTitle}>{card.title}</h3>}
-                  description={
-                    <p className={styles.cardDescription}>{card.description}</p>
+                <Card
+                  className={styles.card}
+                  bordered={false}
+                  cover={
+                    <div className={styles.cardImageWrapper}>
+                      <Image
+                        alt={card.title}
+                        src={card.image}
+                        width={100}
+                        height={100}
+                        className={styles.cardImage}
+                        style={{
+                          borderRadius: "50%",
+                          border: "3px solid white",
+                        }}
+                      />
+                    </div>
                   }
-                  className={styles.cardMeta}
-                />
-              </Card>
+                >
+                  <Meta
+                    title={<h3 className={styles.cardTitle}>{card.title}</h3>}
+                    description={
+                      <p className={styles.cardDescription}>{card.description}</p>
+                    }
+                    className={styles.cardMeta}
+                  />
+                </Card>
+              </motion.div>
             </div>
           </Col>
         ))}

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Row, Col, Pagination } from "antd";
+import { motion } from "framer-motion";
 import styles from "./page.module.css";
 const data = [
   {
@@ -69,20 +70,40 @@ const page = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.header}>Health Benefits</h1>
-      {currentItems.map((item) => (
-        <Row key={item.id} className={styles.row} gutter={[16, 16]}>
-          <Col lg={10} className={styles.imageColumn}>
-            <img src={item.image} alt={item.title} className={styles.image} />
-          </Col>
-          <Col lg={14} className={styles.descriptionColumn}>
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
-            <a href={`/details/${item.id}`} className={styles.readMore}>
-              Read More
-            </a>
-          </Col>
-        </Row>
-      ))}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        {currentItems.map((item) => (
+          <motion.div
+            key={item.id} // Add the key prop here to avoid the warning
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.3 },
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className={styles.cardContainer}
+          >
+            <Row className={styles.row} gutter={[16, 16]}>
+              <Col lg={9} className={styles.imageColumn}>
+                <img src={item.image} alt={item.title} className={styles.image} />
+              </Col>
+              <Col lg={15} className={styles.descriptionColumn}>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p>
+                <a href={`/details/${item.id}`} className={styles.readMore}>
+                  Read More
+                </a>
+              </Col>
+            </Row>
+          </motion.div>
+        ))}
+      </motion.div>
+
       <Pagination
         current={currentPage}
         total={data.length}

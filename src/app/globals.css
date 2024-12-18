@@ -108,7 +108,7 @@ body {
 .ant-form-item-label > label {
   font-family: "Poppins", sans-serif;
   content: none !important;
-  font-size: 2rem !important;
+  font-size: 25px !important;
   color: #ffffff !important;
   margin-bottom: 8px;
 }
