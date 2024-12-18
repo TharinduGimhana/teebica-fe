@@ -73,16 +73,17 @@
   font-size: 25px;
 }
 
-.pagination {
+.paginationContainer{
   color: #fff;
   margin: 0 auto;
   text-align: center;
-  position: fixed;
+  position: absolute;
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
 }
+
 
 @media (max-width: 768px) {
   .header {
@@ -114,7 +115,7 @@
     margin-bottom: 20px;
   }
 
-  .pagination {
+  .paginationContainer {
     bottom: 40px;
   }
 }

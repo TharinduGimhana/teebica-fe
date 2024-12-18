@@ -56,7 +56,7 @@ const data = [
   },
 ];
 
-const page = () => {
+const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
@@ -76,43 +76,48 @@ const page = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {currentItems.map((item) => (
-          <motion.div
-            key={item.id} // Add the key prop here to avoid the warning
-            whileHover={{
-              scale: 1.05,
-              transition: { duration: 0.3 },
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className={styles.cardContainer}
-          >
-            <Row className={styles.row} gutter={[16, 16]}>
-              <Col lg={9} className={styles.imageColumn}>
-                <img src={item.image} alt={item.title} className={styles.image} />
-              </Col>
-              <Col lg={15} className={styles.descriptionColumn}>
-                <h1>{item.title}</h1>
-                <p>{item.description}</p>
-                <a href={`/details/${item.id}`} className={styles.readMore}>
-                  Read More
-                </a>
-              </Col>
-            </Row>
-          </motion.div>
-        ))}
+        <Row gutter={[16, 16]}>
+          {currentItems.map((item) => (
+            <Col span={24} key={item.id}>
+              <motion.div
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.3 },
+                }}
+                className={styles.cardContainer}
+              >
+                <Row className={styles.row} gutter={[16, 16]}>
+                  <Col lg={9} className={styles.imageColumn}>
+                    <img
+                      src={item.image}
+                      alt={`Image of ${item.title}`}
+                      className={styles.image}
+                    />
+                  </Col>
+                  <Col lg={15} className={styles.descriptionColumn}>
+                    <h1>{item.title}</h1>
+                    <p>{item.description}</p>
+                    <a href={`/details/${item.id}`} className={styles.readMore}>
+                      Read More
+                    </a>
+                  </Col>
+                </Row>
+              </motion.div>
+            </Col>
+          ))}
+        </Row>
       </motion.div>
 
-      <Pagination
-        current={currentPage}
-        total={data.length}
-        pageSize={itemsPerPage}
-        onChange={handleChange}
-        className={styles.pagination}
-      />
+      <div className={styles.paginationContainer}>
+        <Pagination
+          current={currentPage}
+          total={data.length}
+          pageSize={itemsPerPage}
+          onChange={handleChange}
+        />
+      </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
