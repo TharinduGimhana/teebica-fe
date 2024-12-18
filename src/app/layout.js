@@ -20,6 +20,24 @@ const geistMono = Geist_Mono({
 //   description: "Experience the taste",
 // };
 
+const suppressWarnings = () => {
+  const originalConsoleError = console.error;
+
+  console.error = (...args) => {
+    const errorMessage = args[0];
+    if (
+      typeof errorMessage === "string" &&
+      (errorMessage.includes("Accessing element.ref was removed in React 19") ||
+        errorMessage.includes("reactRender is not a function"))
+    ) {
+      return;
+    }
+    originalConsoleError(...args);
+  };
+};
+
+suppressWarnings();
+
 export default function RootLayout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
