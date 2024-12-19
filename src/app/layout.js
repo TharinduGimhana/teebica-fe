@@ -28,7 +28,7 @@ const suppressWarnings = () => {
     if (
       typeof errorMessage === "string" &&
       (errorMessage.includes("Accessing element.ref was removed in React 19") ||
-        errorMessage.includes("reactRender is not a function"))
+        errorMessage.includes("render.js:38 Uncaught TypeError: reactRender is not a function") || errorMessage.includes("A tree hydrated but some attributes of"))
     ) {
       return;
     }

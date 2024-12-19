@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styles from "../styles/navbar.module.css";
@@ -8,7 +8,7 @@ import styles from "../styles/navbar.module.css";
 const Navbar = ({ isScrolled: parentIsScrolled }) => {
   const [activeKey, setActiveKey] = useState("/");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const menuRef = useRef(null);
 
   const menuItems = [
     { key: "/", label: "Home" },
@@ -45,6 +45,25 @@ const Navbar = ({ isScrolled: parentIsScrolled }) => {
     }
   }, [menuOpen]);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [menuOpen]);
+
   return (
     <div
       className={`${styles.navbar} ${parentIsScrolled ? styles.scrolled : ""}`}
@@ -64,6 +83,7 @@ const Navbar = ({ isScrolled: parentIsScrolled }) => {
       </button>
 
       <div
+        ref={menuRef}
         className={`${styles.menuContainer} ${
           menuOpen ? styles.menuOpen : styles.menuClosed
         }`}
