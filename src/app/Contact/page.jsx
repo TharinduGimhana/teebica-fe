@@ -1,13 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Row, Col } from "antd";
 import styles from "./page.module.css";
 
 const page = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const onFinish = (values) => {
-    console.log("Submitted values:", values);
+    console.log("Form values submitted:", values);
   };
+
+  if (!isClient) return null;
 
   return (
     <div className={styles.formContainer}>

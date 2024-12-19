@@ -20,6 +20,17 @@ const geistMono = Geist_Mono({
 //   description: "Experience the taste",
 // };
 
+
+
+if (typeof window !== "undefined") {
+  window.onerror = (message, source, lineno, colno, error) => {
+    if (message.includes("reactRender is not a function")) {
+      console.log("reactRender log");
+      return true; // Prevents the error from propagating.
+    }
+  };
+}
+
 const suppressWarnings = () => {
   const originalConsoleError = console.error;
 
@@ -28,7 +39,7 @@ const suppressWarnings = () => {
     if (
       typeof errorMessage === "string" &&
       (errorMessage.includes("Accessing element.ref was removed in React 19") ||
-        errorMessage.includes("render.js:38 Uncaught TypeError: reactRender is not a function") || errorMessage.includes("A tree hydrated but some attributes of"))
+        errorMessage.includes("A tree hydrated but some attributes of"))
     ) {
       return;
     }

@@ -74,7 +74,7 @@ export default function Home() {
               <motion.div
                 whileHover={{
                   scale: 1.1,
-                  transition: { duration: 0.3 },
+                  transition: { duration: 0.5 },
                 }}
                 initial={{ x: "-10vw", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
