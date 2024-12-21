@@ -24,9 +24,9 @@ const geistMono = Geist_Mono({
 
 if (typeof window !== "undefined") {
   window.onerror = (message, source, lineno, colno, error) => {
-    if (message.includes("reactRender is not a function")) {
+    if ((message.includes("reactRender is not a function")) || (message.includes("_ is not a function"))) {
       console.log("reactRender log");
-      return true; // Prevents the error from propagating.
+      return true;
     }
   };
 }

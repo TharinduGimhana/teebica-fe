@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Row, Col, Button, Card } from "antd";
 import { motion } from "framer-motion";
 import styles from "./page.module.css";
+const image = "/images/teapots.png";
 
 export default function Home() {
   const { Meta } = Card;
@@ -42,9 +43,12 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Row className={styles.row}>
-        <Col xs={24} md={12} className={styles.leftColumn}>
+        <Col xs={24} sm={24} md={24} lg={12} className={styles.leftColumn}>
           <h1 className={styles.header}>Teebica</h1>
           <h2 className={styles.subHeader}>Experience The Taste Of Arabica</h2>
+
+          <img src={image} alt={""} className={styles.image} />
+
           <p className={styles.paragraph}>
             Are you familiar with Teebica? It's a unique product made from
             sun-dried leaves of Coffea Arabica Typica plant that have undergone
@@ -62,7 +66,7 @@ export default function Home() {
           </div>
         </Col>
 
-        <Col xs={24} md={12} className={styles.rightColumn}>
+        <Col xs={24} sm={24} md={12} lg={12} className={styles.rightColumn}>
           <div className={styles.imageOverlay}></div>
         </Col>
       </Row>
@@ -102,7 +106,9 @@ export default function Home() {
                   <Meta
                     title={<h3 className={styles.cardTitle}>{card.title}</h3>}
                     description={
-                      <p className={styles.cardDescription}>{card.description}</p>
+                      <p className={styles.cardDescription}>
+                        {card.description}
+                      </p>
                     }
                     className={styles.cardMeta}
                   />
